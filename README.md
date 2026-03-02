@@ -36,7 +36,9 @@ Support for additional IDEs and developer tools will be added in future updates,
 
 ## 🛠 Installation Example
 
-To install Visual Studio Code:
+To install any app:
 
+```bash
 chmod +x scripts/install<app>.sh
 sudo ./scripts/install<app>.sh
+```
