@@ -11,6 +11,7 @@ It focuses on clean, manual installations from official sources such as `tar.gz`
 Scriptly currently supports:
 
 - Visual Studio Code (Linux x64)
+- Cursor (Linux x64)
 
 ---
 
