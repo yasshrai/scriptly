@@ -12,8 +12,7 @@ Scriptly currently supports:
 
 - Visual Studio Code (Linux x64)
 - Cursor (Linux x64)
-
----
+- Antigravity (Linux x64)
 
 ## 🔮 Future Plans
 
