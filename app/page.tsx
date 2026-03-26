@@ -3,12 +3,14 @@ import Link from "next/link";
 import { SiGithub, SiIntellijidea, SiPycharm, SiAndroidstudio, } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { VscTerminalBash, VscCloudDownload, VscPackage, VscShield } from "react-icons/vsc";
+import ReleaseBanner from "@/components/ReleaseBanner";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center bg-black selection:bg-white selection:text-black">
+      <ReleaseBanner />
       {/* Navigation */}
-      <nav className="fixed top-0 z-50 flex w-full max-w-5xl items-center justify-between px-6 py-6 backdrop-blur-md">
+      <nav className="sticky top-0 z-50 flex w-full max-w-5xl items-center justify-between px-6 py-6 backdrop-blur-md">
         <div className="flex items-center gap-2">
           <Image
             src="/logo.png"
@@ -30,12 +32,12 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="flex w-full flex-col items-center px-6 pt-32 sm:pt-48">
+      <main className="flex w-full flex-col items-center px-6 pt-16 sm:pt-32">
         {/* Hero Section */}
         <section className="flex max-w-3xl flex-col items-center text-center">
           <Link href="/install" className="mb-4 inline-flex items-center rounded-full border border-border bg-zinc-900/50 px-3 py-1 text-xs font-medium text-muted hover:bg-zinc-900 transition-colors">
             <span className="mr-2 flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
-            Now supporting VS Code & Cursor
+            Now supporting VS Code, Cursor & Antigravity
           </Link>
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl">
             Install apps on Linux, <br />
@@ -71,7 +73,7 @@ export default function Home() {
               <p className="mt-2 text-muted">Reliable installations from official sources.</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {/* VS Code */}
-                <div className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50">
+                <Link href="/install?id=vscode" className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50 cursor-pointer">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800">
                     <VscVscode className="h-6 w-6 text-[#007ACC]" />
                   </div>
@@ -79,10 +81,10 @@ export default function Home() {
                     <p className="font-semibold text-white">VS Code</p>
                     <p className="text-xs text-muted font-sans">Linux x64</p>
                   </div>
-                </div>
+                </Link>
 
                 {/* Cursor */}
-                <div className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50">
+                <Link href="/install?id=cursor" className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50 cursor-pointer">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 p-2">
                     <Image
                       src="/cursor.png"
@@ -96,7 +98,24 @@ export default function Home() {
                     <p className="font-semibold text-white">Cursor</p>
                     <p className="text-xs text-muted font-sans">Linux x64</p>
                   </div>
-                </div>
+                </Link>
+
+                {/* Antigravity */}
+                <Link href="/install?id=antigravity" className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50 cursor-pointer">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 p-2">
+                    <Image
+                      src="/antigravity.png"
+                      alt="Antigravity Logo"
+                      width={24}
+                      height={24}
+                      className="h-6 w-6 object-contain"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Antigravity</p>
+                    <p className="text-xs text-muted font-sans">Linux x64</p>
+                  </div>
+                </Link>
               </div>
             </div>
             <div>

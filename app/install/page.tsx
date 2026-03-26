@@ -35,6 +35,14 @@ const IDES: IDE[] = [
         isAvailable: true,
     },
     {
+        id: "antigravity",
+        name: "Antigravity",
+        image: "/antigravity.png",
+        color: "#A855F7",
+        component: lazy(() => import("@/docs/antigravity.mdx")),
+        isAvailable: true,
+    },
+    {
         id: "intellij",
         name: "IntelliJ IDEA",
         icon: SiIntellijidea,
@@ -125,6 +133,14 @@ export default function InstallPage() {
 
     useEffect(() => {
         setIsLoaded(true);
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get('id');
+        if (idParam) {
+            const ide = IDES.find(i => i.id === idParam);
+            if (ide && ide.isAvailable) {
+                setSelectedIde(ide);
+            }
+        }
     }, []);
 
     const DocContent = selectedIde.component;
