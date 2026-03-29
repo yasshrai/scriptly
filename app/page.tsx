@@ -37,7 +37,7 @@ export default function Home() {
         <section className="flex max-w-3xl flex-col items-center text-center">
           <Link href="/install" className="mb-4 inline-flex items-center rounded-full border border-border bg-zinc-900/50 px-3 py-1 text-xs font-medium text-muted hover:bg-zinc-900 transition-colors">
             <span className="mr-2 flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
-            Now supporting VS Code, Cursor & Antigravity
+            Now supporting VS Code, Cursor, Antigravity & Windsurf
           </Link>
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl">
             Install apps on Linux, <br />
@@ -113,6 +113,23 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-semibold text-white">Antigravity</p>
+                    <p className="text-xs text-muted font-sans">Linux x64</p>
+                  </div>
+                </Link>
+
+                {/* Windsurf */}
+                <Link href="/install?id=windsurf" className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50 cursor-pointer">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800 p-2">
+                    <Image
+                      src="/windsurf.png"
+                      alt="Windsurf Logo"
+                      width={24}
+                      height={24}
+                      className="h-6 w-6 object-contain"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Windsurf</p>
                     <p className="text-xs text-muted font-sans">Linux x64</p>
                   </div>
                 </Link>

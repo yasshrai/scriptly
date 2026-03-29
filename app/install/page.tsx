@@ -43,6 +43,14 @@ const IDES: IDE[] = [
         isAvailable: true,
     },
     {
+        id: "windsurf",
+        name: "Windsurf",
+        image: "/windsurf.png",
+        color: "#0ea5e9",
+        component: lazy(() => import("@/docs/windsurf.mdx")),
+        isAvailable: true,
+    },
+    {
         id: "intellij",
         name: "IntelliJ IDEA",
         icon: SiIntellijidea,
