@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=IntellijIdea
+Comment=Code Editing. Redefined.
+Exec=/opt/intellij/bin/idea
+Icon=/opt/intellij/bin/idea.png
+Type=Application
+Categories=Development;IDE;
+Terminal=false

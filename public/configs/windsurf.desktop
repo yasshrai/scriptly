@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=windsurf
+Comment=Code Editing. Redefined.
+Exec=/opt/windsurf/windsurf
+Icon=/opt/windsurf/resources/app/resources/linux/code.png
+Type=Application
+Categories=Development;IDE;
+Terminal=false

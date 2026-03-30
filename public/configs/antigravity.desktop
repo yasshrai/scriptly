@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Antigravity
+Comment=Code Editing. Redefined.
+Exec=/opt/Antigravity/antigravity
+Icon=/opt/Antigravity/resources/app/resources/linux/antigravity.png
+Type=Application
+Categories=Development;IDE;
+Terminal=false

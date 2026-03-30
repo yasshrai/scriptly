@@ -78,17 +78,27 @@ const IDES: IDE[] = [
 
 const CodeBlock = ({ children, className, ...props }: any) => {
     const [copied, setCopied] = useState(false);
+    const [origin, setOrigin] = useState("");
     const isInline = !className;
 
+    useEffect(() => {
+        setOrigin(window.location.origin);
+    }, []);
+
+    let textContent = children?.toString() || "";
+    if (origin) {
+        textContent = textContent.replace(/\{\{BASE_URL\}\}/g, origin);
+    }
+
     const copyToClipboard = () => {
-        const text = children.toString().replace(/^\$ /, "");
+        const text = textContent.replace(/^\$ /, "");
         navigator.clipboard.writeText(text);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
 
     if (isInline) {
-        return <code className="bg-zinc-900 px-1.5 py-0.5 rounded text-sm font-mono text-zinc-300" {...props}>{children}</code>;
+        return <code className="bg-zinc-900 px-1.5 py-0.5 rounded text-sm font-mono text-zinc-300" {...props}>{textContent}</code>;
     }
 
     return (
@@ -118,7 +128,7 @@ const CodeBlock = ({ children, className, ...props }: any) => {
             <div className="flex items-center justify-between rounded-2xl border border-border bg-zinc-950 p-5 font-mono text-sm transition-all group-hover:bg-zinc-900/40 group-hover:border-zinc-800 overflow-x-auto">
                 <code className="text-zinc-300" {...props}>
                     <span className="mr-2 text-zinc-600 select-none">$</span>
-                    {children}
+                    {textContent}
                 </code>
             </div>
         </div>
