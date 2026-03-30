@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense, lazy } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub, SiIntellijidea, SiPycharm, SiAndroidstudio } from "react-icons/si";
-import { VscVscode, VscTerminalBash, VscCopy, VscCheck } from "react-icons/vsc";
+import { VscVscode, VscTerminalBash, VscCopy, VscCheck, VscMenu, VscClose } from "react-icons/vsc";
 import { IconType } from "react-icons";
 
 interface IDE {
@@ -56,7 +56,7 @@ const IDES: IDE[] = [
         icon: SiIntellijidea,
         color: "#FE315D",
         component: lazy(() => import("@/docs/intellij.mdx")),
-        isAvailable: false,
+        isAvailable: true,
     },
     {
         id: "pycharm",
@@ -138,6 +138,7 @@ const components = {
 export default function InstallPage() {
     const [selectedIde, setSelectedIde] = useState(IDES[0]);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
         setIsLoaded(true);
@@ -155,19 +156,43 @@ export default function InstallPage() {
 
     return (
         <div className="flex min-h-screen bg-black text-white selection:bg-white selection:text-black">
+            {/* Mobile Nav Overlay */}
+            {isSidebarOpen && (
+                <div 
+                    className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden"
+                    onClick={() => setIsSidebarOpen(false)}
+                />
+            )}
+
+            {/* Mobile Header */}
+            <div className="lg:hidden fixed top-0 left-0 right-0 z-20 flex items-center justify-between border-b border-border bg-black/50 backdrop-blur-xl px-6 py-4">
+                <Link href="/" className="flex items-center gap-2">
+                    <Image src="/logo.png" alt="Scriptly Logo" width={24} height={24} className="rounded-md" />
+                    <span className="text-lg font-bold tracking-tight text-white font-sans">Scriptly</span>
+                </Link>
+                <button onClick={() => setIsSidebarOpen(true)} className="p-2 text-muted hover:text-white transition-colors">
+                    <VscMenu className="h-6 w-6" />
+                </button>
+            </div>
+
             {/* Sidebar */}
-            <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-border bg-black/50 backdrop-blur-xl">
-                <div className="flex h-full flex-col p-6">
-                    <Link href="/" className="flex items-center gap-2 mb-10">
-                        <Image
-                            src="/logo.png"
-                            alt="Scriptly Logo"
-                            width={24}
-                            height={24}
-                            className="rounded-md"
-                        />
-                        <span className="text-lg font-bold tracking-tight text-white font-sans">Scriptly</span>
-                    </Link>
+            <aside className={`fixed left-0 top-0 z-40 h-screen w-64 border-r border-border bg-black/95 lg:bg-black/50 backdrop-blur-xl transition-transform duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}>
+                <div className="flex h-full flex-col p-6 overflow-y-auto">
+                    <div className="flex items-center justify-between mb-10">
+                        <Link href="/" className="flex items-center gap-2">
+                            <Image
+                                src="/logo.png"
+                                alt="Scriptly Logo"
+                                width={24}
+                                height={24}
+                                className="rounded-md"
+                            />
+                            <span className="text-lg font-bold tracking-tight text-white font-sans">Scriptly</span>
+                        </Link>
+                        <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden p-2 -mr-2 text-muted hover:text-white transition-colors">
+                            <VscClose className="h-6 w-6" />
+                        </button>
+                    </div>
 
                     <nav className="flex-1 space-y-2">
                         <p className="px-2 text-xs font-semibold uppercase tracking-wider text-muted mb-4 font-sans">
@@ -176,7 +201,12 @@ export default function InstallPage() {
                         {IDES.map((ide) => (
                             <button
                                 key={ide.id}
-                                onClick={() => ide.isAvailable && setSelectedIde(ide)}
+                                onClick={() => {
+                                    if (ide.isAvailable) {
+                                        setSelectedIde(ide);
+                                        setIsSidebarOpen(false);
+                                    }
+                                }}
                                 disabled={!ide.isAvailable}
                                 className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-all ${selectedIde.id === ide.id
                                     ? "bg-white text-black"
@@ -223,8 +253,8 @@ export default function InstallPage() {
             </aside>
 
             {/* Main Content */}
-            <main className="ml-64 flex-1 p-8 lg:p-12">
-                <div className="mx-auto max-w-4xl pt-12">
+            <main className="flex-1 lg:ml-64 p-6 pt-24 lg:p-12 lg:pt-12 w-full">
+                <div className="mx-auto max-w-4xl">
                     <div className="mb-12">
                         <div
                             className="flex h-16 w-16 items-center justify-center rounded-2xl bg-zinc-900 border border-border mb-6 overflow-hidden"

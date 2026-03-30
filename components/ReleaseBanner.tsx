@@ -4,7 +4,7 @@ import { VscMegaphone } from "react-icons/vsc";
 // UPDATE THIS CONFIGURATION TO ANNOUNCE NEW RELEASES
 export const RELEASE_CONFIG = {
   isVisible: true,
-  text: "🚀 Antigravity and Windsurf support is now live in Scriptly! Install it today.",
+  text: "🚀 IntelliJ IDEA support is now live in Scriptly! Install it today.",
   link: "/install",
 };
 

@@ -37,7 +37,7 @@ export default function Home() {
         <section className="flex max-w-3xl flex-col items-center text-center">
           <Link href="/install" className="mb-4 inline-flex items-center rounded-full border border-border bg-zinc-900/50 px-3 py-1 text-xs font-medium text-muted hover:bg-zinc-900 transition-colors">
             <span className="mr-2 flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
-            Now supporting VS Code, Cursor, Antigravity & Windsurf
+            Now supporting VS Code, Cursor, Antigravity, Windsurf & IntelliJ IDEA
           </Link>
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl">
             Install apps on Linux, <br />
@@ -133,6 +133,17 @@ export default function Home() {
                     <p className="text-xs text-muted font-sans">Linux x64</p>
                   </div>
                 </Link>
+
+                {/* IntelliJ IDEA */}
+                <Link href="/install?id=intellij" className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50 cursor-pointer">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800">
+                    <SiIntellijidea className="h-6 w-6 text-[#FE315D]" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">IntelliJ IDEA</p>
+                    <p className="text-xs text-muted font-sans">Linux x64</p>
+                  </div>
+                </Link>
               </div>
             </div>
             <div>
@@ -140,7 +151,6 @@ export default function Home() {
               <p className="mt-2 text-muted font-sans">Expanding the collection of supported tools.</p>
               <div className="mt-6 grid grid-cols-2 gap-4">
                 {[
-                  { name: "IntelliJ IDEA", icon: SiIntellijidea, color: "#FE315D" },
                   { name: "PyCharm", icon: SiPycharm, color: "#21D789" },
                   { name: "Android Studio", icon: SiAndroidstudio, color: "#3DDC84" },
                   { name: "Dev Tools", icon: VscTerminalBash, color: "#FFFFFF" },
