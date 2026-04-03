@@ -40,7 +40,7 @@ export default function Home() {
             Now supporting VS Code, Cursor, Antigravity, Windsurf & IntelliJ IDEA
           </Link>
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl">
-            Install apps on Linux, <br />
+            Install IDEs on Linux, <br />
             <span className="bg-gradient-to-r from-zinc-200 to-zinc-500 bg-clip-text text-transparent">
               the clean way.
             </span>
