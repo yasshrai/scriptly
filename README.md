@@ -17,8 +17,8 @@ Scriptly currently supports:
 - Antigravity (Linux x64)
 - IntelliJ IDEA (Linux x64)
 - WindSurf (Linux x64)
-- PyCharm
-- Android Studio
+- PyCharm (Linux x64)
+- Android Studio (Linux x64)
 
 ---
 ## ⚙️ Requirements
