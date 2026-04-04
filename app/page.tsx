@@ -37,7 +37,7 @@ export default function Home() {
         <section className="flex max-w-3xl flex-col items-center text-center">
           <Link href="/install" className="mb-4 inline-flex items-center rounded-full border border-border bg-zinc-900/50 px-3 py-1 text-xs font-medium text-muted hover:bg-zinc-900 transition-colors">
             <span className="mr-2 flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
-            Now supporting VS Code, Cursor, Antigravity, Windsurf & IntelliJ IDEA
+            Now supporting VS Code, Cursor, Antigravity, Windsurf, IntelliJ IDEA, PyCharm & Android Studio
           </Link>
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl">
             Install IDEs on Linux, <br />
@@ -67,7 +67,7 @@ export default function Home() {
 
         {/* Support Section */}
         <section className="mt-32 w-full max-w-5xl border-t border-border pt-24">
-          <div className="grid gap-12 sm:grid-cols-2">
+          <div className="w-full">
             <div>
               <h2 className="text-2xl font-bold tracking-tight">Current Support</h2>
               <p className="mt-2 text-muted">Reliable installations from official sources.</p>
@@ -144,22 +144,28 @@ export default function Home() {
                     <p className="text-xs text-muted font-sans">Linux x64</p>
                   </div>
                 </Link>
-              </div>
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-white">Future Plans</h2>
-              <p className="mt-2 text-muted font-sans">Expanding the collection of supported tools.</p>
-              <div className="mt-6 grid grid-cols-2 gap-4">
-                {[
-                  { name: "PyCharm", icon: SiPycharm, color: "#21D789" },
-                  { name: "Android Studio", icon: SiAndroidstudio, color: "#3DDC84" },
-                  { name: "Dev Tools", icon: VscTerminalBash, color: "#FFFFFF" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-muted font-sans">
-                    <item.icon className="h-4 w-4" style={{ color: item.color }} />
-                    {item.name}
+
+                {/* PyCharm */}
+                <Link href="/install?id=pycharm" className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50 cursor-pointer">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800">
+                    <SiPycharm className="h-6 w-6 text-[#21D789]" />
                   </div>
-                ))}
+                  <div>
+                    <p className="font-semibold text-white">PyCharm</p>
+                    <p className="text-xs text-muted font-sans">Linux x64</p>
+                  </div>
+                </Link>
+
+                {/* Android Studio */}
+                <Link href="/install?id=android-studio" className="flex items-center gap-3 rounded-xl border border-border bg-zinc-900/30 p-4 transition-colors hover:bg-zinc-900/50 cursor-pointer">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-800">
+                    <SiAndroidstudio className="h-6 w-6 text-[#3DDC84]" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white">Android Studio</p>
+                    <p className="text-xs text-muted font-sans">Linux x64</p>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>

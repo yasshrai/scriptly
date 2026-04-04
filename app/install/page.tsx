@@ -64,7 +64,7 @@ const IDES: IDE[] = [
         icon: SiPycharm,
         color: "#21D789",
         component: lazy(() => import("@/docs/pycharm.mdx")),
-        isAvailable: false,
+        isAvailable: true,
     },
     {
         id: "android-studio",
@@ -72,7 +72,7 @@ const IDES: IDE[] = [
         icon: SiAndroidstudio,
         color: "#3DDC84",
         component: lazy(() => import("@/docs/android-studio.mdx")),
-        isAvailable: false,
+        isAvailable: true,
     },
 ];
 

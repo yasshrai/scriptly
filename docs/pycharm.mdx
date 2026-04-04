@@ -2,22 +2,22 @@
 
 Professional Python development on Linux, simplified.
 
-### 1. Clone the repository
+## Install via cURL
+
+Run the following command in your terminal. It will download and execute the installation script directly:
+
 ```bash
-git clone https://github.com/yasshrai/scriptly
+curl -sL {{BASE_URL}}/scripts/installpycharm.sh | sudo bash
 ```
 
-### 2. Navigate to scripts
-```bash
-cd scriptly/scripts
-```
+## Update PyCharm
 
-### 3. Make the script executable
-```bash
-chmod +x installpycharm.sh
-```
+To update to the latest version, simply re-run the installation command above. The script will safely replace your existing installation.
 
-### 4. Run the installer
+## Uninstall PyCharm
+
+### Uninstall via cURL
+
 ```bash
-sudo ./installpycharm.sh
+curl -sL {{BASE_URL}}/scripts/uninstall/uninstallpycharm.sh | sudo bash
 ```
