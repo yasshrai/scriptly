@@ -4,7 +4,7 @@ import { VscMegaphone } from "react-icons/vsc";
 // UPDATE THIS CONFIGURATION TO ANNOUNCE NEW RELEASES
 export const RELEASE_CONFIG = {
   isVisible: true,
-  text: "🚀 Android Studio & PyCharm support is now live in Scriptly! Install them today.",
+  text: "🚀 Cursor 3.0 support is now live in Scriptly! Install it today.",
   link: "/install",
 };
 
