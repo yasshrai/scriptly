@@ -5,21 +5,21 @@ set -e
 INSTALL_DIR="/opt/windsurf"
 DESKTOP_DIR="/usr/share/applications"
 
-echo "Starting windsurf uninstallation..."
+echo -e "\e[31m==>\e[0m Starting windsurf uninstallation..."
 
 if [[ $EUID -ne 0 ]]; then
-   echo "Please run with sudo."
+   echo -e "\e[31m==>\e[0m Please run with sudo."
    exit 1
 fi
 
 if [ -d "$INSTALL_DIR" ]; then
-    echo "Removing windsurf directory..."
+    echo -e "\e[31m==>\e[0m Removing windsurf directory..."
     rm -rf "$INSTALL_DIR"
 fi
 
 if [ -f "$DESKTOP_DIR/windsurf.desktop" ]; then
-    echo "Removing desktop file..."
+    echo -e "\e[31m==>\e[0m Removing desktop file..."
     rm "$DESKTOP_DIR/windsurf.desktop"
 fi
 
-echo "windsurf uninstalled successfully."
+echo -e "\e[31m==>\e[0m windsurf uninstalled successfully."

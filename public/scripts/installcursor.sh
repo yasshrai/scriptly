@@ -11,33 +11,33 @@ ICON_URL="https://ypotqqt69y.ufs.sh/f/HxxcQDnqeRL8eemQLNwLYRh8tnD9qmCFgHZBPpuN0i
 # Absolute path of the script directory
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "Starting Cursor installation..."
+echo -e "\e[32m==>\e[0m Starting Cursor installation..."
 
 # Must run as root
 if [[ $EUID -ne 0 ]]; then
-   echo "Please run with sudo."
+   echo -e "\e[33m==>\e[0m Please run with sudo."
    exit 1
 fi
 
 # Check required tools
 if ! command -v curl &> /dev/null; then
-    echo "curl is required but not installed."
+    echo -e "\e[33m==>\e[0m curl is required but not installed."
     exit 1
 fi
 
-echo "Creating install directory..."
+echo -e "\e[32m==>\e[0m Creating install directory..."
 mkdir -p "$INSTALL_DIR"
 
-echo "Downloading Cursor AppImage..."
+echo -e "\e[32m==>\e[0m Downloading Cursor AppImage..."
 curl -L "$URL" -o "$INSTALL_FILE"
 
-echo "Making AppImage executable..."
+echo -e "\e[32m==>\e[0m Making AppImage executable..."
 chmod +x "$INSTALL_FILE"
 
-echo "Ensuring applications directory exists..."
+echo -e "\e[32m==>\e[0m Ensuring applications directory exists..."
 mkdir -p "$DESKTOP_DIR"
 
-echo "Creating desktop file..."
+echo -e "\e[32m==>\e[0m Creating desktop file..."
 cat << 'EOF' > "$DESKTOP_DIR/cursor.desktop"
 [Desktop Entry]
 Name=Cursor
@@ -48,7 +48,7 @@ Categories=Development;
 Terminal=false
 EOF
 
-echo "Creating icon file..."
+echo -e "\e[32m==>\e[0m Creating icon file..."
 curl -L "$ICON_URL" -o "$INSTALL_DIR/cursor.png"
 
-echo "Cursor installed successfully."
+echo -e "\e[32m==>\e[0m Cursor installed successfully."
