@@ -4,7 +4,20 @@ import createMDX from "@next/mdx";
 const nextConfig: NextConfig = {
   // Configure `pageExtensions` to include markdown and mdx files
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  // Optionally, add any other Next.js config below
+  // Add headers to serve script files as plain text so they don't download
+  async headers() {
+    return [
+      {
+        source: "/scripts/:path*",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "text/plain; charset=utf-8",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 const withMDX = createMDX({
