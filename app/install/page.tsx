@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense, lazy } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub, SiIntellijidea, SiPycharm, SiAndroidstudio } from "react-icons/si";
-import { VscVscode, VscTerminalBash, VscCopy, VscCheck, VscMenu, VscClose } from "react-icons/vsc";
+import { VscVscode, VscTerminalBash, VscCopy, VscCheck, VscMenu, VscClose, VscCode } from "react-icons/vsc";
 import { IconType } from "react-icons";
 
 interface IDE {
@@ -90,6 +90,10 @@ const CodeBlock = ({ children, className, ...props }: any) => {
         textContent = textContent.replace(/\{\{BASE_URL\}\}/g, origin);
     }
 
+    const scriptMatch = textContent.match(/\/scripts\/[\w./-]+/);
+    const scriptPath = scriptMatch ? scriptMatch[0] : null;
+    const scriptUrl = scriptPath && origin ? `${origin}${scriptPath}` : scriptPath;
+
     const copyToClipboard = () => {
         const text = textContent.replace(/^\$ /, "");
         navigator.clipboard.writeText(text);
@@ -108,10 +112,22 @@ const CodeBlock = ({ children, className, ...props }: any) => {
                     <VscTerminalBash className="h-4 w-4 text-muted" />
                     <span className="text-xs font-medium text-muted uppercase tracking-wider font-sans">Terminal</span>
                 </div>
-                <button
-                    onClick={copyToClipboard}
-                    className="flex items-center gap-1.5 rounded-md bg-zinc-900 px-2.5 py-1 text-xs font-medium text-muted transition-colors hover:bg-zinc-800 hover:text-white"
-                >
+                <div className="flex items-center gap-2">
+                    {scriptPath && (
+                        <a
+                            href={scriptUrl || scriptPath}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 rounded-md bg-zinc-900 px-2.5 py-1 text-xs font-medium text-muted transition-colors hover:bg-zinc-800 hover:text-white"
+                        >
+                            <VscCode className="h-3.5 w-3.5" />
+                            Preview Script
+                        </a>
+                    )}
+                    <button
+                        onClick={copyToClipboard}
+                        className="flex items-center gap-1.5 rounded-md bg-zinc-900 px-2.5 py-1 text-xs font-medium text-muted transition-colors hover:bg-zinc-800 hover:text-white"
+                    >
                     {copied ? (
                         <>
                             <VscCheck className="h-3.5 w-3.5 text-green-500" />
@@ -123,7 +139,8 @@ const CodeBlock = ({ children, className, ...props }: any) => {
                             Copy
                         </>
                     )}
-                </button>
+                    </button>
+                </div>
             </div>
             <div className="flex items-center justify-between rounded-2xl border border-border bg-zinc-950 p-5 font-mono text-sm transition-all group-hover:bg-zinc-900/40 group-hover:border-zinc-800 overflow-x-auto">
                 <code className="text-zinc-300" {...props}>
